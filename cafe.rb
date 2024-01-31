@@ -20,6 +20,10 @@ def take_order(menus)
   end
   print '>'
   order_number = gets.to_i - 1
+  until order_number.between?(0, menus.size - 1)
+    print "番号は選択肢の中から入力してください\n>"
+    order_number = gets.to_i - 1
+  end
   puts "#{menus[order_number][:name]}(#{menus[order_number][:price]}円)ですね。"
   order_number
 end
