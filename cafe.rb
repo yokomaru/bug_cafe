@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
 DRINKS = [
-  { name: 'コーヒー', price: '300' },
-  { name: 'カフェラテ', price: '400' },
-  { name: 'チャイ', price: '460' },
-  { name: 'エスプレッソ', price: '340' },
-  { name: '緑茶', price: '450' }
+  { name: 'コーヒー', price: 300 },
+  { name: 'カフェラテ', price: 400 },
+  { name: 'チャイ', price: 460 },
+  { name: 'エスプレッソ', price: 340 },
+  { name: '緑茶', price: 450 }
 ].freeze
 
 FOODS = [
-  { name: 'チーズケーキ', price: '470' },
-  { name: 'アップルパイ', price: '520' },
-  { name: 'ホットサンド', price: '410' }
+  { name: 'チーズケーキ', price: 470 },
+  { name: 'アップルパイ', price: 520 },
+  { name: 'ホットサンド', price: 410 }
 ].freeze
 
 def take_order(menus)
@@ -20,19 +20,15 @@ def take_order(menus)
   end
   print '>'
   order_number = gets.to_i - 1
-  until order_number.between?(0, menus.size - 1)
-    print "番号は選択肢の中から入力してください\n>"
-    order_number = gets.to_i - 1
-  end
   puts "#{menus[order_number][:name]}(#{menus[order_number][:price]}円)ですね。"
   order_number
 end
 
 puts 'bugカフェへようこそ！ご注文は？ 番号でどうぞ'
-order1 = take_order(DRINKS)
+drink_order = take_order(DRINKS)
 
 puts 'フードメニューはいかがですか?'
-order2 = take_order(FOODS)
+food_order = take_order(FOODS)
 
-total = FOODS[order2][:price].to_i + DRINKS[order1][:price].to_i
+total = FOODS[food_order][:price] + DRINKS[drink_order][:price]
 puts "お会計は#{total}円になります。ありがとうございました！"
